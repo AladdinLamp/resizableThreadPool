@@ -56,7 +56,7 @@ inline ThreadPool::ThreadPool(size_t threads)
         newWorker(i);
 }
 
-void ThreadPool::newWorker(int i)
+inline void ThreadPool::newWorker(int i)
 {
     workers.emplace_back(
         [this, i]
@@ -111,17 +111,17 @@ auto ThreadPool::enqueue(F&& f, Args&&... args)
     return res;
 }
 
-void ThreadPool::stopThreads()
+inline void ThreadPool::stopThreads()
 {
     stop = true;
 }
 
-int ThreadPool::getThreadNum()
+inline int ThreadPool::getThreadNum()
 {
     return m_threadNum;
 }
 
-int ThreadPool::resize(int threads)
+inline int ThreadPool::resize(int threads)
 {
 
     if (threads == 0) 
